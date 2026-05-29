@@ -566,8 +566,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour::
 	playfanfare MUS_OBTAIN_ITEM
-	message gText_PokemonJoinedYourParty
-	waitmessage
 	waitfanfare
 	return
 	
