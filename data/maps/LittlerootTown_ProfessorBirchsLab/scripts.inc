@@ -566,14 +566,13 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour::
 	playfanfare MUS_OBTAIN_ITEM
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_YouReceivedHoundour, MSGBOX_DEFAULT
+	message gText_PokemonJoinedYourParty
+	waitmessage
 	waitfanfare
 	return
 	
 LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC::
-	playfanfare MUS_OBTAIN_ITEM
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoundourSentToPC, MSGBOX_DEFAULT
-	waitfanfare
+	call Common_EventScript_TransferredToPC
 	return
 
 
