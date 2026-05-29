@@ -539,87 +539,25 @@ EventScript_RegisterProfBirch::
 	release
 	end
 
-
-
-%LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
-	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
-	givemon SPECIES_HOUNDOUR, 5
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
-	setvar VAR_BIRCH_LAB_STATE, 5
-	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
-	setvar VAR_LITTLEROOT_TOWN_STATE, 3
-	releaseall
-	end
-
-%LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour::
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
-	return
-	
-%LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC::
-	call Common_EventScript_TransferredToPC
-	return
-
-
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
-
-	givemon SPECIES_HOUNDOUR, 5
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC
-
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_AfterHoundour
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour::
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_AfterHoundour
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC::
-	call Common_EventScript_TransferredToPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_AfterHoundour
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_AfterHoundour::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
 	closemessage
-
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
-
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
-
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
-
 	releaseall
 	end
-
-
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
