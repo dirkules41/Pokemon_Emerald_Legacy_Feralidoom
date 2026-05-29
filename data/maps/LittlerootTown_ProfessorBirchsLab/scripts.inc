@@ -539,9 +539,14 @@ EventScript_RegisterProfBirch::
 	release
 	end
 
+
+
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
+	givemon SPECIES_HOUNDOUR, 5
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
@@ -558,6 +563,20 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
 	releaseall
 	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedHoundour::
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_YouReceivedHoundour, MSGBOX_DEFAULT
+	waitfanfare
+	return
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_HoundourToPC::
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoundourSentToPC, MSGBOX_DEFAULT
+	waitfanfare
+	return
+
+
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
