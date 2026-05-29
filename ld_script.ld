@@ -6,7 +6,7 @@ gMaxLines = 0;
 MEMORY
 {
     EWRAM (rwx) : ORIGIN = 0x2000000, LENGTH = 512K
-    IWRAM (rwx) : ORIGIN = 0x3000000, LENGTH = 32K
+    IWRAM (rwx) : ORIGIN = 0x3000000, LENGTH = 64K
     ROM    (rx) : ORIGIN = 0x8000000, LENGTH = 32M
 }
 
